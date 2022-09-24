@@ -121,19 +121,54 @@ public class Game implements GameInterface {
                 else if (item == 1)
                     System.out.print("x ");
                 else if (item == 2)
-                    System.out.print("x ");
+                    System.out.print("o ");
             }
             System.out.println();
         }
     }
 
-    public void printResult(int player) {
+    public void printResult(int player){
+    }
+
+    //question I am not sure if this is a correct way to override the interface, current printResults, is impossible
+    // to implement it asks as to assess if tie was achieved, but it is not possible without howMany parameter).
+    public void printResult(int player, int howMany) {
+        if (hasWon(player, howMany)){
+            if(player==1)
+                System.out.println("----- X won! -----");
+            else if (player == 2)
+                System.out.println("----- O won! -----");
+        } else {
+            System.out.println("----- It's a tie! -----");
+        }
     }
 
     public void enableAi(int player) {
     }
 
     public void play(int howMany) {
+        System.out.println("You are about to start playing Five-in-a-row. This is your board");
+        printBoard();
+        boolean infiniteLoop = true;
+        while(infiniteLoop){
+            for (int player = 1; player <= 2; player++) {
+                int[] newMove = getMove(player);
+                mark(player,newMove[0],newMove[1]);
+                printBoard();
+                if(hasWon(player,howMany)){
+                    infiniteLoop = false;
+                    printResult(player,howMany);
+                    printBoard();
+                    break;}
+                if(isFull()){
+                    infiniteLoop = false;
+                    printResult(player,howMany);
+                    printBoard();
+                    break;}
+            }
+
+        }
+
     }
 
     private String getCharForNumber(int i) {
@@ -149,14 +184,5 @@ public class Game implements GameInterface {
     }
 
 
-    //todo remove below testing area
-    public void fillBoard(){
-        int count = 0;
-        for (int[] ints : board) {
-            count ++;
-            if (count ==2)
-                Arrays.fill(ints, 1);
-        }
-    }
 
 }

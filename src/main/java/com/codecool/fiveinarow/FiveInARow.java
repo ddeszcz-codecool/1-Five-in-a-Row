@@ -8,20 +8,8 @@ public class FiveInARow {
         Game game = new Game(5, 10);
         game.enableAi(1);
         game.enableAi(2);
-        game.play(5);
-        System.out.println(Arrays.deepToString(game.getBoard())); //todo - testing to be removed
-        int[] newMove = game.getMove(1);   //todo - testing to be changed - remove
-        game.mark(1,newMove[0], newMove[1]);
+        game.play(3);
 
-
-
-        System.out.println(Arrays.deepToString(game.getBoard())); //todo - testing to be removed
-//        game.fillBoard();
-        System.out.println(Arrays.deepToString(game.getBoard())); //todo - testing to be removed
-        System.out.println(game.hasWon(1,3));
-        System.out.println(game.isFull());
-
-        game.printBoard();
 
 
 
