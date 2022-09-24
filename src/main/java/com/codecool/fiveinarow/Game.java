@@ -103,6 +103,28 @@ public class Game implements GameInterface {
     }
 
     public void printBoard() {
+        //print  width key
+        System.out.print("  ");
+        for (int i = 0; i < board[0].length; i++) {
+            System.out.print(i+1 + " ");
+        }
+        System.out.println();
+
+        //print height key and matrix
+        for (int i = 0; i < board.length; i++) {
+            //print height key
+            System.out.print(getCharForNumber(i + 1) + " ");
+            //print matrix
+            for (int item:board[i]) {
+                if (item == 0)
+                    System.out.print(". ");
+                else if (item == 1)
+                    System.out.print("x ");
+                else if (item == 2)
+                    System.out.print("x ");
+            }
+            System.out.println();
+        }
     }
 
     public void printResult(int player) {
