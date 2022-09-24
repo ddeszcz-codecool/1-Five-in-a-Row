@@ -17,6 +17,7 @@ public class FiveInARow {
 //        game.fillBoard();
         System.out.println(Arrays.deepToString(game.getBoard())); //todo - testing to be removed
         System.out.println(game.hasWon(1,3));
+        System.out.println(game.isFull());
 
 
 
