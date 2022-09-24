@@ -10,5 +10,7 @@ public class FiveInARow {
         game.enableAi(2);
         game.play(5);
         System.out.println(Arrays.deepToString(game.getBoard()));
+        int[] newMove = game.getMove(1);
+        System.out.println(Arrays.toString(newMove));
     }
 }
