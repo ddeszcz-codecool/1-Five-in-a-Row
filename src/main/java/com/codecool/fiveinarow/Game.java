@@ -15,6 +15,8 @@ public class Game implements GameInterface {
         }
     }
 
+
+
     public int[][] getBoard() {
         return board;
     }
@@ -77,6 +79,18 @@ public class Game implements GameInterface {
     }
 
     public boolean hasWon(int player, int howMany) {
+        // per game instruction only consecutive markings in a row are analyzed at this stage consecutive markings
+        // in column are not analyzed. This might be a miscommunication, and it needs to be clarified with the customer.
+        for (int[] ints:board){
+            int count = 0;
+            for (int item : ints){
+                if (item == player){
+                    count++;
+                } else {count = 0;}
+                if (count == howMany)
+                    return true;
+            }
+        }
         return false;
     }
 
@@ -106,6 +120,17 @@ public class Game implements GameInterface {
 
     private String getBoardHeight(int[][] board){
         return getCharForNumber(board.length );
+    }
+
+
+    //todo remove below testing area
+    public void fillBoard(){
+        int count = 0;
+        for (int[] ints : board) {
+            count ++;
+            if (count ==2)
+                Arrays.fill(ints, 1);
+        }
     }
 
 }
