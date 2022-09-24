@@ -70,6 +70,10 @@ public class Game implements GameInterface {
     }
 
     public void mark(int player, int row, int col) {
+        // this method will not check whether the cell has been already used or whether the selection
+        // is out of bound because it has already been done ine getMove() method and that will be the only source of
+        // coordinates for this method
+        board[row][col]=player;
     }
 
     public boolean hasWon(int player, int howMany) {
