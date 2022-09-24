@@ -36,8 +36,13 @@ public class Game implements GameInterface {
                     " Please do not exceed board range." +
                     " Board height is from A to " + getBoardHeight(board) +
                     " and board width is from 1 to " + getBoardWidth(board));
+            System.out.println("If you want to exit the game please type - quit");
 
             String coordinates = scanner.nextLine().toUpperCase();
+
+            if (coordinates.equals("QUIT")) {
+                System.exit(0);
+            }
 
             //checking if format - coordinates length is correct
             if (coordinates.length() == 2) {
