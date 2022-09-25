@@ -84,8 +84,7 @@ public class Game implements GameInterface {
     }
 
     public boolean hasWon(int player, int howMany) {
-        // per game instruction only consecutive markings in a row are analyzed at this stage consecutive markings
-        // in column are not analyzed. This might be a miscommunication, and it needs to be clarified with the customer.
+        // consecutive marking in a row analyzed
         for (int[] ints:board){
             int count = 0;
             for (int item : ints){
@@ -96,6 +95,23 @@ public class Game implements GameInterface {
                     return true;
             }
         }
+
+        // consecutive marking in a column analyzed
+        for (int i = 0; i < board[0].length; i++) {
+            int count = 0;
+            for (int[] ints : board) {
+                if (ints[i] == player) {
+                    count++;
+                } else {
+                    count = 0;
+                }
+                if (count == howMany)
+                    return true;
+
+            }
+
+        }
+
         return false;
     }
 
